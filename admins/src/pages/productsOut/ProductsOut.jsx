@@ -11,6 +11,7 @@ import {
   hapusPrdOut,
   hapusProdukOut,
 } from "../../redux/apiCalls";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 export default function ProductsOut() {
   const [data, setData] = useState(productRows);
@@ -35,10 +36,18 @@ export default function ProductsOut() {
       width: 200,
       renderCell: (params) => {
         return (
-          <div className="productListItem">
-            <img className="productListImg" src={params.row.img} alt="" />
-            {params.row.produk}
-          </div>
+          <TransformWrapper
+            defaultScale={1}
+            defaultPositionX={100}
+            defaultPositionY={200}
+          >
+            <TransformComponent>
+              <div className="productListItem">
+                <img className="productListImg" src={params.row.img} alt="" />
+                {params.row.produk}
+              </div>
+            </TransformComponent>
+          </TransformWrapper>
         );
       },
     },

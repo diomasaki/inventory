@@ -25,6 +25,9 @@ export default function Topbar() {
         </div>
         <div className="topRight">
           <div className="topbarIconContainer">
+            <button onClick={() => window.print()}>PDF</button>
+          </div>
+          <div className="topbarIconContainer">
             <NotificationsNone />
             <span className="topIconBadge">2</span>
           </div>

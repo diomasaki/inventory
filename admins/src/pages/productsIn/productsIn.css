@@ -5,6 +5,7 @@
 .productListItem{
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .productListImg {

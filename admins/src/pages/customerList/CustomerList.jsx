@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { dapatKustomer, hapusKustomer } from "../../redux/apiCalls";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 export default function CustomerList() {
   const [data, setData] = useState(userRows);
@@ -29,10 +30,18 @@ export default function CustomerList() {
       width: 200,
       renderCell: (params) => {
         return (
-          <div className="userListUser">
-            <img className="userListImg" src={params.row.img} alt="" />
-            {params.row.username}
-          </div>
+          <TransformWrapper
+            defaultScale={1}
+            defaultPositionX={100}
+            defaultPositionY={200}
+          >
+            <TransformComponent>
+              <div className="userListUser">
+                <img className="userListImg" src={params.row.img} alt="" />
+                {params.row.username}
+              </div>
+            </TransformComponent>
+          </TransformWrapper>
         );
       },
     },

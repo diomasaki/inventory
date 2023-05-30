@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { dapatPrdIn, hapusPrdIn } from "../../redux/apiCalls";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 export default function ProductsIn() {
   const [data, setData] = useState(productRows);
@@ -30,10 +31,18 @@ export default function ProductsIn() {
       width: 200,
       renderCell: (params) => {
         return (
-          <div className="productListItem">
-            <img className="productListImg" src={params.row.img} alt="" />
-            {params.row.produk}
-          </div>
+          <TransformWrapper
+            defaultScale={1}
+            defaultPositionX={100}
+            defaultPositionY={200}
+          >
+            <TransformComponent>
+              <div className="productListItem">
+                <img className="productListImg" src={params.row.img} alt="" />
+                {params.row.produk}
+              </div>
+            </TransformComponent>
+          </TransformWrapper>
         );
       },
     },
